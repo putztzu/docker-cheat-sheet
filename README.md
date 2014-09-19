@@ -1,5 +1,7 @@
 # Docker Cheat Sheet
 
+Maintained separately by TSU based on original work by wsargent
+
 NOTE: This used to be a gist that continually expanded.  It's now a github project because it's considerably easier for other people to edit, fix and expand on Docker using Github.  Just click  [README.md](https://github.com/wsargent/docker-cheat-sheet/blob/master/README.md), and then on the "writing pen" icon on the right to edit.
 
 * [Why](https://github.com/wsargent/docker-cheat-sheet#why)
@@ -34,55 +36,12 @@ You may also like to try the following tools (and add more details here after yo
 * [Panamax](http://panamax.io/)
 * [Vessel](http://awvessel.github.io/)
 
-## Prequisites
+## Prequisites, Docker Installation
+Install in a virtualization technology like Virtualbox, VMware, Hyper-V if you are not running on Linux. As of today, Docker runs only on Linux.
 
-Use [Homebrew](http://brew.sh/).
+Whatever your distro, Docker can be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. OpenSUSE requires adding the Virtualization repo as described in this wiki
+http://en.opensuse.org/User:Tsu2/docker
 
-```
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-```
-
-## Installation
-
-This is all MacOS specific.
-
-Install VirtualBox and Vagrant using [Brew Cask](https://github.com/phinze/homebrew-cask).
-
-```
-brew tap caskroom/homebrew-cask
-brew install brew-cask
-brew cask install virtualbox
-brew cask install vagrant
-```
-
-I personally don't use boot2docker because I already know how to use Vagrant, and I don't like how boot2docker doesn't give me control over my Vagrant instances (especially the lack of port forwarding).  So this is the real way to do it.
-
-We use the [Open Vagrant files](https://github.com/phusion/open-vagrant-boxes) defined by Phusion, which have better default settings:
-
-```
-vagrant init phusion/ubuntu-14.04-amd64
-vagrant up
-vagrant ssh
-```
-
-Once you're in the Vagrant instance, install Docker like any other package:
-
-```
-sudo apt-get update
-sudo apt-get install -qy software-properties-common # needed for add-apt-repository etc
-sudo apt-get install -qy docker.io
-sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
-```
-
-Then start up a container:
-
-```
-sudo docker run -i -t ubuntu /bin/bash
-```
-
-That's it, you have a running Docker container.  Also note that Vagrant 1.6 has Docker [supported as a built-in provisioner](https://docs.vagrantup.com/v2/docker/index.html) which can help you when configuring images.
-
-I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) with the [Docker plugin](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#docker) for autocompletion of docker commands.  YMMV.
 
 ## Containers
 
@@ -90,7 +49,7 @@ I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) with the [Docker pl
 
 Some common misconceptions it's worth correcting:
 
-* __Containers are not transient__.  `docker run` doesn't do what you think.
+* __Containers are not transient__.  `docker run` doesn't do what you think, it actually creates new containers.
 * __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
 ### Lifecycle
@@ -101,7 +60,7 @@ Some common misconceptions it's worth correcting:
 * [`docker restart`](http://docs.docker.io/reference/commandline/cli/#restart) restarts a container.
 * [`docker rm`](http://docs.docker.io/reference/commandline/cli/#rm) deletes a container.
 * [`docker kill`](http://docs.docker.io/reference/commandline/cli/#kill) sends a SIGKILL to a container.  [Has issues](https://github.com/dotcloud/docker/issues/197).
-* [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) will connect to a running container.
+* [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) combines two containers to run as one
 * [`docker wait`](http://docs.docker.io/reference/commandline/cli/#wait) blocks until container stops.
 
 If you want to run and then interact with a container, `docker start` then `docker attach` to get in (or, as of 0.9, `nsenter`).
