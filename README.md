@@ -182,7 +182,8 @@ The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based
 
 ## Links
 
-Links are how Docker containers talk to each other [through TCP/IP ports](http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show worked examples.  You can also (in 0.11) resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
+Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
+
 
 NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
 
@@ -223,21 +224,34 @@ See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) fo
 
 ## Exposing ports
 
-Exposing ports through the host container is [fiddly but doable](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).
+?? Exposing ports through the host container is [fiddly but doable](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).
 
-First expose the port in your Dockerfile:
+Some fundemental docker architecture should be reviewed here
+- Docker Containers are runtime instances based on Images.
+- Docker security is like a shell around the running container
+- Apps running in a Container must inform Docker from the inside what ports the app wants to accept connections.
+- The "docker run" command completes the TCP/IP networking configuration by defining at least the following
+-- The networking stack to be used
+-- The real world IP address to be used
+-- The LInux Bridging Device to be used
+-- The re-mapped port to be used to avoid contention
+
+If not defined explicitly in the "docker run" command, defaults are used. In some cases this is acceptable, but some like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
+
+To tell docker your app wants to use a standard app port (don't worry if this might conflict in the real world, with "docker run" this standard port will be either mapped to the standard port or remapped if necessary)
 
 ```
 EXPOSE <CONTAINERPORT>
 ```
 
-Then map the container port to the host port (only using localhost interface):
+This command tells docker an app running in the container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking is defined.
 
+In the following, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
 ```
-docker run -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
+docker run -d -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
 ```
 
-If you're running Docker in Virtualbox, you then need to forward the port there as well.  It can be useful to define something in Vagrantfile to expose a range of ports so that you can dynamically map them:
+?? If you're running Docker in Virtualbox, you then need to forward the port there as well.  It can be useful to define something in Vagrantfile to expose a range of ports so that you can dynamically map them:
 
 ```
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
