@@ -343,4 +343,19 @@ docker rm `docker ps -a -q`
 
 ```
 docker images -viz | dot -Tpng -o docker.png
-```
+
+### My openSUSE Wiki articles
+Install Docker on openSUSE
+http://en.opensuse.org/User:Tsu2/docker
+Access a Container Console
+http://en.opensuse.org/User:Tsu2/docker-enter
+Build your own Custom Container
+http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
+
+
+### Interesting Docker links
+15 Quick Docker Tips
+https://github.com/putztzu/docker-cheat-sheet.git
+10 Docker Tips
+Includes displaying a graphic image
+http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/```
