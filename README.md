@@ -4,39 +4,19 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 * Most if not all non-Docker is removed including Vagrant, MacOS (unless related to setup), more.
 * I conceptualized some Docker architecture differently. The architecture is not actually different, but the way I piece things together in my mind is considerably different in some places (eg EXPOSE).
 
-NOTE: This used to be a gist that continually expanded.  It's now a github project because it's considerably easier for other people to edit, fix and expand on Docker using Github.  Just click  [README.md](https://github.com/wsargent/docker-cheat-sheet/blob/master/README.md), and then on the "writing pen" icon on the right to edit.
+NOTE: This used to be a gist that continually expanded.  It's now a github project because it's considerably easier for other people to edit, fix and expand on Docker using Github.  Just click  [README.md](https://github.com/putztzu/docker-cheat-sheet/blob/master/README.md), and then on the "writing pen" icon on the right to edit.
 
-* [Why](https://github.com/wsargent/docker-cheat-sheet#why)
-* [I just want a dev environment](https://github.com/wsargent/docker-cheat-sheet#tldr-i-just-want-a-dev-environment)
-* [Prerequisites](https://github.com/wsargent/docker-cheat-sheet#prequisites)
-* [Installation](https://github.com/wsargent/docker-cheat-sheet#installation)
-* [Containers](https://github.com/wsargent/docker-cheat-sheet#containers)
-* [Images](https://github.com/wsargent/docker-cheat-sheet#images)
-* [Registry and Repository](https://github.com/wsargent/docker-cheat-sheet#registry--repository)
-* [Dockerfile](https://github.com/wsargent/docker-cheat-sheet#dockerfile)
-* [Layers](https://github.com/wsargent/docker-cheat-sheet#layers)
-* [Links](https://github.com/wsargent/docker-cheat-sheet#links)
-* [Volumes](https://github.com/wsargent/docker-cheat-sheet#volumes)
-* [Exposing Ports](https://github.com/wsargent/docker-cheat-sheet#exposing-ports)
-* [Tips](https://github.com/wsargent/docker-cheat-sheet#tips)
+* [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
+* [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)
+* [Images](https://github.com/putztzu/docker-cheat-sheet#images)
+* [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
+* [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)
+* [Layers](https://github.com/putztzu/docker-cheat-sheet#layers)
+* [Links](https://github.com/putztzu/docker-cheat-sheet#links)
+* [Volumes](https://github.com/putztzu/docker-cheat-sheet#volumes)
+* [Exposing Ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports)
+* [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
 
-## Why
-
-[Why Should I Care (For Developers)](https://www.docker.io/the_whole_story/#Why-Should-I-Care-\(For-Developers\))
-
-> "Docker interests me because it allows simple environment isolation and repeatability. I can create a run-time environment once, package it up, then run it again on any other machine. Furthermore, everything that runs in that environment is isolated from the underlying host (much like a virtual machine). And best of all, everything is fast and simple."
-
-## TL;DR, I just want a dev environment
-
-* [A Docker Dev Environment in 24 Hours!](http://blog.relateiq.com/a-docker-dev-environment-in-24-hours-part-2-of-2/)
-* [Building a Development Environment With Docker](http://tersesystems.com/2013/11/20/building-a-development-environment-with-docker/)
-* [Discourse in a Docker Container](http://samsaffron.com/archive/2013/11/07/discourse-in-a-docker-container)
-
-You may also like to try the following tools (and add more details here after you try them):
-
-* [Fig](http://www.fig.sh/)
-* [Panamax](http://panamax.io/)
-* [Vessel](http://awvessel.github.io/)
 
 ## Prequisites, Docker Installation
 Install in a virtualization technology like Virtualbox, VMware, Hyper-V if you are not running on Linux. As of today, Docker runs only on Linux.
@@ -44,10 +24,17 @@ Install in a virtualization technology like Virtualbox, VMware, Hyper-V if you a
 Whatever your distro, Docker can be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. OpenSUSE requires adding the Virtualization repo as described in this wiki
 http://en.opensuse.org/User:Tsu2/docker
 
+## Images
+An image is a basic building block. It typically has only minimal configurations, ready for you to customize and create a running environment (a container).
 
 ## Containers
 
-[Your basic isolated Docker process](http://docker.readthedocs.org/terms/container/#container-def).  Containers are to Virtual Machines as threads are to processes.  Or you can think of them as chroots on steroids.
+[The isolated runtime environment](http://docker.readthedocs.org/terms/container/#container-def) which is created from an image.  Containers are the app, OS, or anything you want running.  Containers are like highly featured chroots, but much more advanced features you might find in other virtualization technologies.
+
+One User life-cycle might be 
+- Launch a generic container from a generic image
+- Access the console and modify the application as it's running from inside the container
+- Commit your container, thereby creating a new image which now contains your configuration modifications.
 
 Some common misconceptions it's worth correcting:
 
@@ -75,7 +62,7 @@ If you want to map a directory on the host to a docker container, `docker run -v
 
 If you want to integrate a container with a [host process manager](http://docs.docker.io/use/host_integration/), start the daemon with `-r=false` then use `docker start -a`.
 
-If you want to expose container ports through the host, see the [exposing ports](https://github.com/wsargent/docker-cheat-sheet#exposing-ports) section.
+If you want to expose container ports through the host, see the [exposing ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports) section.
 
 ### Info
 
