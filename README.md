@@ -1,6 +1,8 @@
 # Docker Cheat Sheet
 
-Maintained separately by TSU based on original work by wsargent
+Maintained separately by TSU based on original work by [www.github.com/wsargent](http://github.com/wsargent/docker-cheat-sheet). The reason why I decided to do a permanent fork is that much of my re-wording is stylistic rather than purely substantive. Some differences are
+* Most if not all non-Docker is removed including Vagrant, MacOS (unless related to setup), more.
+* I conceptualized some Docker architecture differently. The architecture is not actually different, but the way I piece things together in my mind is considerably different in some places (eg EXPOSE).
 
 NOTE: This used to be a gist that continually expanded.  It's now a github project because it's considerably easier for other people to edit, fix and expand on Docker using Github.  Just click  [README.md](https://github.com/wsargent/docker-cheat-sheet/blob/master/README.md), and then on the "writing pen" icon on the right to edit.
 
