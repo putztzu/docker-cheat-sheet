@@ -4,8 +4,6 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 * Most if not all non-Docker is removed including Vagrant, MacOS (unless related to setup), more.
 * I conceptualized some Docker architecture differently. The architecture is not actually different, but the way I piece things together in my mind is considerably different in some places (eg EXPOSE).
 
-NOTE: This used to be a gist that continually expanded.  It's now a github project because it's considerably easier for other people to edit, fix and expand on Docker using Github.  Just click  [README.md](https://github.com/putztzu/docker-cheat-sheet/blob/master/README.md), and then on the "writing pen" icon on the right to edit.
-
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)
@@ -86,7 +84,7 @@ There doesn't seem to be a way to use docker directly to import files into a con
 
 ### Entering a Docker Container
 
-The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nnsenter using unix sockets minimizing dependencies and complexity, so in theory should be faster and easier.
+The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter using unix sockets minimizing dependencies and complexity, so in theory should be faster and easier.
 
 * I recommend following my [wiki article](http://en.opensuse.org/User:Tsu2/docker-enter) as simplest but you can also follow others who have written about nsenter
 * [Installing nsenter using docker](https://github.com/jpetazzo/nsenter)
@@ -133,7 +131,7 @@ Docker.io hosts its own [index](https://index.docker.io/) to a central registry 
 
 [The configuration file](http://docs.docker.io/introduction/working-with-docker/#working-with-the-dockerfile). Can be thought of as the "Install file" that defines the steps used to build an image. Typically it will start with a base image defined by FROM, identify its creator/maintainer with MAINTAINER, a sequence of RUN steps, define some app ports with EXPOSE and end by executing a CMD or ENTRYPOINT to start an application
 
-### Some common Dockerfile Elements
+### Some Common Dockerfile Elements
 
 * [FROM](http://docs.docker.io/reference/builder/#from)
 * [MAINTAINER](http://docs.docker.io/reference/builder/#maintainer)
@@ -158,9 +156,7 @@ Docker.io hosts its own [index](https://index.docker.io/) to a central registry 
 
 ### Best Practices
 
-Best to look at [http://github.com/wsargent/docker-devenv](http://github.com/wsargent/docker-devenv) and the [best practices](http://crosbymichael.com/dockerfile-best-practices.html) / [take 2](http://crosbymichael.com/dockerfile-best-practices-take-2.html) for more details.
-
-If you use [jEdit](http://jedit.org), I've put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
+If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
 ## Layers
 
@@ -235,20 +231,6 @@ This command tells docker an app running in the container wants to accept incomi
 In the following, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
 ```
 docker run -d -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
-```
-
-?? If you're running Docker in Virtualbox, you then need to forward the port there as well.  It can be useful to define something in Vagrantfile to expose a range of ports so that you can dynamically map them:
-
-```
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  ...
-
-  (49000..49900).each do |port|
-    config.vm.network :forwarded_port, :host => port, :guest => port
-  end
-
-  ...
-end
 ```
 
 If you forget what you mapped the port to on the host container, use `docker port` to show it:
