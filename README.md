@@ -17,8 +17,8 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 * [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
 
 
-## Prequisites, Docker Installation
-If you are running on Windows, Solaris, BSD or some other non Linux OS, run in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker]{http://boot2docker.io/) is a single project that installs Virtualbox, a non-openSUSE distro and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization, you can do this all manually and make your own decisions.
+## Prereeuisites, Docker Installation
+If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker]{http://boot2docker.io/) is a single project that installs Virtualbox, a non-openSUSE distro and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization, you can do this all manually and make your own decisions.
 
 Whatever your distro, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. OpenSUSE requires adding the Virtualization repo as described in this wiki
 http://en.opensuse.org/User:Tsu2/docker
@@ -29,14 +29,14 @@ An image is a basic building block. Public images typically has only minimal con
 
 ## Containers
 
-A Container is the [isolated runtime environment](http://docker.readthedocs.org/terms/container/#container-def) which is created from an image.  Within a container there can be an app, OS, or anything you want running.  Containers are like highly featured chroots, but much more advanced features you might find in other virtualization technologies.
+A Container is the [isolated runtime environment](http://docker.readthedocs.org/terms/container/#container-def) which is created from an image.  Within a container there can be an app, OS, or anything you want running.  Containers are like highly featured chroots, but with much more advanced features you might find in other virtualization technologies.
 
 A typical container life-cycle might be 
 - Launch a generic container from a generic image
 - Access the console and modify the application as it's running from inside the container
 - Commit your container, thereby creating a new image which now contains your configuration modifications.
 
-Some common misconceptions it's worth correcting:
+Note: the following line is useful info from the prefork, but needs a new home.
 
 * __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
@@ -51,11 +51,13 @@ Some common misconceptions it's worth correcting:
 * [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) allows view or interact with a running container 
 * [`docker wait`](http://docs.docker.io/reference/commandline/cli/#wait) blocks until container stops.
 
-If you want to run and then interact with a container, `docker start` then `docker attach` to get in (or, as of 0.9, `nsenter`).
-
 If you want a transient container, `docker run --rm` will remove the container after it stops.
 
-If you want to poke around in an image, `docker run -t -i <myimage> <myshell>` to open a tty.
+Containers generally are created to run either as a background process (aka "service") or as an inbteractive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
+* An example creating a daemon/service/background container specifying an optional custom container name
+'docker run -d --name containername imagename'
+* An example creating a foreground/normal_app, specifying an interactive tty bash console.
+'docker run -it --name containername imagename /bin/bash'
 
 If you want to map a directory on the host to a docker container, `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
 
@@ -158,11 +160,11 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
-## Layers
+### Layers
 
 The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based on layers.  They're like [git commits or changesets for filesystems](http://docker.readthedocs.org/reference/terms/layer/).
 
-## Links
+### Links
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
@@ -194,7 +196,7 @@ And you can connect to it that way.
 
 To delete links, use `docker rm --link `.
 
-## Volumes
+### Volumes
 
 Docker volumes are [free-floating filesystems](http://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.
 
@@ -206,9 +208,9 @@ Because volumes are isolated filesystems, they are often used to store state fro
 
 See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) for more details.
 
-## Exposing ports
+### Exposing ports
 
-?? Exposing ports through the host container is [fiddly but doable](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).
+[The official Docker documentation](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).<br />
 
 Some fundemental docker architecture should be reviewed here
 - Docker Containers are runtime instances based on Images.
@@ -220,7 +222,7 @@ Some fundemental docker architecture should be reviewed here
 -- The LInux Bridging Device to be used
 -- The re-mapped port to be used to avoid contention
 
-If not defined explicitly in the "docker run" command, defaults are used. In some cases this is acceptable, but some like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
+If not defined explicitly in the "docker run" command, defaults are used. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
 
 To tell docker your app wants to use a standard app port (don't worry if this might conflict in the real world, with "docker run" this standard port will be either mapped to the standard port or remapped if necessary)
 
@@ -242,8 +244,14 @@ docker port CONTAINER $CONTAINERPORT
 ```
 
 ## Tips
+### FAST referencing image and container names
+#### Use Custom names, make them descriptive and short
+If you can remember what they mean, a letter or number might be enough
+#### An undocumented feature is to just type the first couple or few numbers in the ID
+The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displayes a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary, eg the following removes an image with an image id that starts with a1b2c3d4e5f5 <br />
+'docker rmi a1'
 
-Sources:
+Source for the next tips:
 
 * [15 Docker Tips in 5 minutes](http://sssslide.com/speakerdeck.com/bmorearty/15-docker-tips-in-5-minutes)
 
