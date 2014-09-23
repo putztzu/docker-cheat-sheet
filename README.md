@@ -4,6 +4,7 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 * Most if not all non-Docker is removed including Vagrant, MacOS (unless related to setup), more.
 * I conceptualized some Docker architecture differently. The architecture is not actually different, but the way I piece things together in my mind is considerably different in some places (eg EXPOSE).
 
+## Table of Contents
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)
@@ -17,7 +18,7 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 
 
 ## Prequisites, Docker Installation
-If you are running on Windows, Solaris, *BSD or some other non Linux OS, run in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker]{http://boot2docker.io/) is a single project that installs Virtualbox, a non-openSUSE distro and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization, you can do this all manually and make your own decisions.
+If you are running on Windows, Solaris, BSD or some other non Linux OS, run in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker]{http://boot2docker.io/) is a single project that installs Virtualbox, a non-openSUSE distro and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization, you can do this all manually and make your own decisions.
 
 Whatever your distro, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. OpenSUSE requires adding the Virtualization repo as described in this wiki
 http://en.opensuse.org/User:Tsu2/docker
