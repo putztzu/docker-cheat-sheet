@@ -24,21 +24,20 @@ Whatever your distro, Docker should be installed according to directions for you
 http://en.opensuse.org/User:Tsu2/docker
 
 ## Images
-The [Docker reference](http://docker.readthedocs.org/reference/terms/image/).
-An image is a basic building block. It typically has only minimal configurations, ready for you to customize and create a running environment (a container).
+The [Docker reference](http://docker.readthedocs.org/reference/terms/image/).<br />
+An image is a basic building block. Public images typically has only minimal configurations, ready for you to customize and create a running environment (a container).
 
 ## Containers
 
-[The isolated runtime environment](http://docker.readthedocs.org/terms/container/#container-def) which is created from an image.  Containers are the app, OS, or anything you want running.  Containers are like highly featured chroots, but much more advanced features you might find in other virtualization technologies.
+A Container is the [isolated runtime environment](http://docker.readthedocs.org/terms/container/#container-def) which is created from an image.  Within a container there can be an app, OS, or anything you want running.  Containers are like highly featured chroots, but much more advanced features you might find in other virtualization technologies.
 
-One User life-cycle might be 
+A typical container life-cycle might be 
 - Launch a generic container from a generic image
 - Access the console and modify the application as it's running from inside the container
 - Commit your container, thereby creating a new image which now contains your configuration modifications.
 
 Some common misconceptions it's worth correcting:
 
-* __Containers are not transient__.  `docker run` doesn't do what you think, it actually creates new containers.
 * __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
 ### Common Container Commands
@@ -49,7 +48,7 @@ Some common misconceptions it's worth correcting:
 * [`docker restart`](http://docs.docker.io/reference/commandline/cli/#restart) restarts a container.
 * [`docker rm`](http://docs.docker.io/reference/commandline/cli/#rm) deletes a container.
 * [`docker kill`](http://docs.docker.io/reference/commandline/cli/#kill) sends a SIGKILL to a container.  [Has issues](https://github.com/dotcloud/docker/issues/197).
-* [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) combines two containers to run as one
+* [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) allows view or interact with a running container 
 * [`docker wait`](http://docs.docker.io/reference/commandline/cli/#wait) blocks until container stops.
 
 If you want to run and then interact with a container, `docker start` then `docker attach` to get in (or, as of 0.9, `nsenter`).
@@ -67,14 +66,14 @@ If you want to expose container ports through the host, see the [exposing ports]
 ### Info
 
 * [`docker ps`](http://docs.docker.io/reference/commandline/cli/#ps) shows running containers.
-* [`docker inspect`](http://docs.docker.io/reference/commandline/cli/#inspect) looks at all the info on a container (including IP address).
+* [`docker inspect`](http://docs.docker.io/reference/commandline/cli/#inspect) queries a container or image for low level information
 * [`docker logs`](http://docs.docker.io/reference/commandline/cli/#logs) gets logs from container.
 * [`docker events`](http://docs.docker.io/reference/commandline/cli/#events) gets events from container.
 * [`docker port`](http://docs.docker.io/reference/commandline/cli/#port) identifies the external port number for the specified container port (See EXPOSE)
 * [`docker top`](http://docs.docker.io/reference/commandline/cli/#top) shows running processes in container.
 * [`docker diff`](http://docs.docker.io/reference/commandline/cli/#diff) shows changed files in the container's FS.
 
-`docker ps -a` shows running and stopped containers.
+`docker ps -a` lists all containers, both  running and stopped.
 
 ### Import / Export
 (Update - this section will be modified to describe the ADD dockerfile command)
@@ -130,7 +129,7 @@ Docker.io hosts its own [index](https://index.docker.io/) to a central registry 
 
 ## Dockerfile
 
-[The configuration file](http://docs.docker.io/introduction/working-with-docker/#working-with-the-dockerfile). Can be thought of as the "Install file" that defines the steps used to build an image. Typically it will start with a base image defined by FROM, identify its creator/maintainer with MAINTAINER, a sequence of RUN steps, define some app ports with EXPOSE and end by executing a CMD or ENTRYPOINT to start an application
+Dockerfile (exactly as shown including capitalized "D") is [the configuration file](http://docs.docker.io/introduction/working-with-docker/#working-with-the-dockerfile) used to build an image. Can be thought of as the "Install file" that defines the steps used to build an image. Typically it will start with a base image defined by FROM, identify its creator/maintainer with MAINTAINER, a sequence of RUN steps, define some app ports with EXPOSE and end by executing a CMD or ENTRYPOINT to start an application
 
 ### Some Common Dockerfile Elements
 
@@ -147,13 +146,13 @@ Docker.io hosts its own [index](https://index.docker.io/) to a central registry 
 * [WORKDIR](http://docs.docker.io/reference/builder/#workdir)
 * [ONBUILD](http://docs.docker.io/reference/builder/#onbuild)
 
-### Tutorial
+### Tutorials
 
 * [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
 
 ### Examples
 
-* [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples)
+* Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
 
 ### Best Practices
 
@@ -167,6 +166,8 @@ The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
+UPDATE NOTE:
+From here to the end of this "Links" section, the following example is from the original pre-fork cheat sheet and has not been verified
 
 NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
 
