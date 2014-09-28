@@ -18,9 +18,9 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 
 
 ## Prerequisites, Docker Installation
-If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a single project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization or already have some kind of virtualization installed, you can do this all manually and make your own decisions.
+If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. If you are experienced with any virtualization or already have some kind of virtualization installed, you can create a Guest and install Docker in that Guest in an ordinary way.
 
-Whatever your distro, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found [here](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
+Whatever distro you prefer, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found on this [Docker documentation pagee](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
 
 http://en.opensuse.org/User:Tsu2/docker
 
