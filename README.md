@@ -256,8 +256,11 @@ docker port CONTAINER $CONTAINERPORT
 Probably the most tedious part of Docker is typing all those odd names and long ID strings. Supercharge your work with the following techniques!
 #### Use Custom names, make them descriptive and short
 If you can remember what they mean, a letter or number might be enough
-#### Just type the first couple or few numbers in the ID(nice, undocumented feature)
-The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displayes a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary, eg the following removes an image with an image id that starts with a1b2c3d4e5f5 <br />
+#### Just type the first couple or few numbers in the ID<br />
+(nice, undocumented feature)
+The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displayes a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary,
+
+The following example removes an image with an image id that starts with 'a1b2c3d4e5f5' <br />
 ```
 
 docker rmi a1
