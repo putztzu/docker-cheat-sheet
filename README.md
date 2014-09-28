@@ -30,14 +30,14 @@ An image is a basic building block. Public images typically have only minimal co
 
 ### Common Image management commands
 
-* [`docker images`](http://docs.docker.io/reference/commandline/cli/#images) shows all images.
-* [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) creates an image from a tarball.
+* [`docker images`](http://docs.docker.io/reference/commandline/cli/#images) displays all images in the local repository.
+* [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) extracts an image from a tarball file.
 * [`docker build`](http://docs.docker.io/reference/commandline/cli/#build) creates image from Dockerfile.
 * [`docker commit`](http://docs.docker.io/reference/commandline/cli/#commit) creates image from a container.
-* [`docker rmi`](http://docs.docker.io/reference/commandline/cli/#rmi) removes an image.
+* [`docker rmi`](http://docs.docker.io/reference/commandline/cli/#rmi) removes an image from the local repository.
 * [`docker insert`](http://docs.docker.io/reference/commandline/cli/#insert) inserts a file from URL into image. (kind of odd, you'd think images would be immutable after create)
-* [`docker load`](http://docs.docker.io/reference/commandline/cli/#load) loads an image from a tar archive as STDIN, including images and tags
-* [`docker save`](http://docs.docker.io/reference/commandline/cli/#save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
+* [`docker load`](http://docs.docker.io/reference/commandline/cli/#load) Using STDIN, loads an image with its tags from a tar archive
+* [`docker save`](http://docs.docker.io/reference/commandline/cli/#save) saves an image to a tar archive by streaming to STDOUT with all parent layers, tags & versions.
 * [docker history](https://docs.docker.com/reference/commandline/cli/#history) displays the steps used to create and modify the image. Important to understand among things the underlying distro used, TCP/IP ports presented to docker (You then need to match those ports with your "docker run" command)
 
 
