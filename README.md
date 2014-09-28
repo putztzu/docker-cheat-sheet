@@ -63,13 +63,13 @@ A typical container life-cycle might be
 If you want a transient container, `docker run --rm` will remove the container after it stops.
 
 Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
-* An example creating a daemon/service/background container specifying an optional custom container name<br />
+* An example creating a daemon/service/background "detached" container specifying an optional custom container name<br />
 ```
 
 'docker run -d --name containername imagename'
 ```
 
-* An example creating a foreground/normal_app, specifying an interactive tty bash console.<br />
+* An example creating a foreground/normal app, specifying an interactive tty bash console.<br />
 ```
 
 'docker run -it --name containername imagename /bin/bash'
@@ -98,7 +98,7 @@ If you want to allow incoming network connections to the app in your container, 
 
 
 ### Import / Export
-(Update - this section will be modified to describe the ADD dockerfile command)
+Note - this section under review and will be modified to describe the ADD dockerfile command)
 
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
 * [`docker export`](http://docs.docker.io/reference/commandline/cli/#export) turns container filesystem into tarball.
@@ -112,7 +112,7 @@ The most recommended way to enter a docker container while it's running is to us
 * [How to enter a Docker container](https://blog.codecentric.de/en/2014/07/enter-docker-container/)
 * [Docker debug with nsenter on boot2docker](http://blog.sequenceiq.com/blog/2014/07/05/docker-debug-with-nsenter-on-boot2docker/)
 
-`nsenter` allows you to run any command from a console within the running container. If the container doesn't already have the pre-isntalled app or tool, you can often install the app on the fly. If that's not possible, they you may need to build your own image and pre-install the tool or app. 
+`nsenter` allows you to run any command from a console within the running container. If the container doesn't already have the pre-isntalled app or tool, you can often install the app on the fly. If that's not possible, then you may need to build your own image and pre-install the tool or app. 
 
 The nsenter documentation you follow should describe how to use a command "docker-enter" which is a wrapper for nsenter with a series of commonly desired command attributes (see the official nsentern documentation for more details). You can also append a command to the end of the docker-enter command if you wish to execute the command by default (not typically necessary).
 
@@ -122,7 +122,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
 
 ## Registry & Repository
-Note: This section will be re-worked after definitions are re-verified<br />
+Note: This section under review<br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
 You can also specify other private repositories.
@@ -165,10 +165,12 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 
 ### Layers
+Note: This section under review
 
 The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based on layers.  They're like [git commits or changesets for filesystems](http://docker.readthedocs.org/reference/terms/layer/).
 
 ### Links
+Note: This section under review
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
@@ -201,6 +203,7 @@ And you can connect to it that way.
 To delete links, use `docker rm --link `.
 
 ### Volumes
+Note: This secion under review
 
 Docker volumes are [free-floating filesystems](http://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.
 
@@ -258,6 +261,8 @@ The actual containerid or imageid is over 40 characters long (I haven't counted 
 
 docker rmi a1
 ```
+
+Note: The rest of this section is under review
 
 Source for the next tips:
 
@@ -332,7 +337,7 @@ docker images -viz | dot -Tpng -o docker.png
 ### Misc Useful tips
 ```
 
-Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
+Containers are not limited to running a single command or process. You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
 If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
