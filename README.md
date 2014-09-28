@@ -238,7 +238,7 @@ To tell docker your app wants to use a standard app port (don't worry if this mi
 EXPOSE <CONTAINERPORT>
 ```
 
-This command tells docker an app running insidethe container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking like ip addressing is defined.
+This command tells docker an app running inside the container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking like ip addressing is defined.
 
 In the following example, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
 ```
@@ -256,9 +256,9 @@ docker port CONTAINER $CONTAINERPORT
 Probably the most tedious part of Docker is typing all those odd names and long ID strings. Supercharge your work with the following techniques!
 #### Use Custom names, make them descriptive and short
 If you can remember what they mean, a letter or number might be enough
-#### Just type the first couple or few numbers in the ID<br />
-(nice, undocumented feature)
-The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displays a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary,
+#### Just type the first couple or few numbers in the ID
+
+The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is. Listing the container or image (eg docker ps or docker images) displays a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary,
 
 The following example removes an image with an imageid that starts with `a1b2c3d4e5f5` <br />
 ```
