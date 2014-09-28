@@ -10,7 +10,10 @@
 * [Volumes](https://github.com/putztzu/docker-cheat-sheet#volumes)
 * [Exposing Ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports)
 * [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
-* [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#Credit to Original Work)
+# [Misc Useful Tips](https://github.com/putztzu/docker-cheat-sheet#misc-useful-tips)
+* [My openSUSE Wiki articles](https://github.com/putztzu/docker-cheat-sheet#my-opensuse-wiki-articles)
+* [Interesting Docker links](https://github.com/putztzu/docker-cheat-sheet#interesting-docker-links)
+* [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#credit-to-original=work)
 
 
 ## Prerequisites, Docker Installation
@@ -245,12 +248,15 @@ docker port CONTAINER $CONTAINERPORT
 ```
 
 ## Tips
-### FAST referencing image and container names
+### Reference an image or container with only a couple taps
 #### Use Custom names, make them descriptive and short
 If you can remember what they mean, a letter or number might be enough
-#### An undocumented feature is to just type the first couple or few numbers in the ID
+#### Just type the first couple or few numbers in the ID(nice, undocumented feature)
 The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displayes a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary, eg the following removes an image with an image id that starts with a1b2c3d4e5f5 <br />
-'docker rmi a1'
+```
+
+docker rmi a1
+```
 
 Source for the next tips:
 
@@ -325,12 +331,13 @@ docker images -viz | dot -Tpng -o docker.png
 ### Misc Useful tips
 ```
 
-* __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
-* If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
+Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
+
+If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
 ```
 
-### My openSUSE Wiki articles
+## My openSUSE Wiki articles
 ```
 
 Install Docker on openSUSE
@@ -342,7 +349,7 @@ http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
 ```
 
-### Interesting Docker links
+## Interesting Docker links
 ```
 
 15 Quick Docker Tips
