@@ -1,4 +1,5 @@
 # Docker Cheat Sheet
+An extraordinarily verbose compilation of useful Docker commands, where they are used and examples
 ## Table of Contents
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
@@ -35,7 +36,7 @@ An image is a basic building block. Public images typically have only minimal co
 * [`docker commit`](http://docs.docker.io/reference/commandline/cli/#commit) creates image from a container.
 * [`docker rmi`](http://docs.docker.io/reference/commandline/cli/#rmi) removes an image.
 * [`docker insert`](http://docs.docker.io/reference/commandline/cli/#insert) inserts a file from URL into image. (kind of odd, you'd think images would be immutable after create)
-* [`docker load`](http://docs.docker.io/reference/commandline/cli/#load) loads an image from a tar archive as STDIN, including images and tags (as of 0.7).
+* [`docker load`](http://docs.docker.io/reference/commandline/cli/#load) loads an image from a tar archive as STDIN, including images and tags
 * [`docker save`](http://docs.docker.io/reference/commandline/cli/#save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
 * [docker history](https://docs.docker.com/reference/commandline/cli/#history) displays the steps used to create and modify the image. Important to understand among things the underlying distro used, TCP/IP ports presented to docker (You then need to match those ports with your "docker run" command)
 
@@ -216,20 +217,20 @@ Because volumes are isolated filesystems, they are often used to store state fro
 See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) for more details.
 
 ### Exposing ports
-
+aka Setting up Incoming Network Connections<br />
 [The official Docker documentation](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).<br />
 
 Some fundemental docker architecture should be reviewed here
 - Docker Containers are runtime instances based on Images.
 - Docker security is like a shell around the running container
 - Apps running in a Container must inform Docker from the inside what ports the app wants to accept connections.
-- The "docker run" command completes the TCP/IP networking configuration by defining at least the following<br />
+- The "docker run" command completes the TCP/IP networking configuration from the outside by defining at least the following<br />
 -- The networking stack to be used<br />
 -- The real world IP address to be used<br />
 -- The LInux Bridging Device to be used<br />
 -- The re-mapped port to be used to avoid contention
 
-If not defined explicitly in the "docker run" command, defaults are used. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
+If host:container port mapping is not defined explicitly in the "docker run" command, defaults are applied. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
 
 To tell docker your app wants to use a standard app port (don't worry if this might conflict in the real world, with "docker run" this standard port will be either mapped to the standard port or remapped if necessary)
 
@@ -237,7 +238,7 @@ To tell docker your app wants to use a standard app port (don't worry if this mi
 EXPOSE <CONTAINERPORT>
 ```
 
-This command tells docker an app running in the container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking is defined.
+This command tells docker an app running in the container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking like ip addressing is defined.
 
 In the following, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
 ```
