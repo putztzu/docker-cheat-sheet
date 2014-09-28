@@ -18,16 +18,17 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 
 
 ## Prerequisites, Docker Installation
-If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a single project that installs Virtualbox, a non-openSUSE distro and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization, you can do this all manually and make your own decisions.
+If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. As of today, Docker runs only on Linux. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a single project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. But even then, if you are experienced with any virtualization or already have some kind of virtualization installed, you can do this all manually and make your own decisions.
 
-Whatever your distro, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. OpenSUSE requires adding the Virtualization repo as described in this wiki
+Whatever your distro, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found [here](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
+
 http://en.opensuse.org/User:Tsu2/docker
 
 ## Images
 The [Docker reference](http://docker.readthedocs.org/reference/terms/image/).<br />
-An image is a basic building block. Public images typically has only minimal configurations, ready for you to customize and create a running environment (a container).
+An image is a basic building block. Public images typically have only minimal configurations, ready for you to customize and create a running environment (a container).
 
-### Common Image Management commands
+### Common Image management commands
 
 * [`docker images`](http://docs.docker.io/reference/commandline/cli/#images) shows all images.
 * [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) creates an image from a tarball.
@@ -37,7 +38,7 @@ An image is a basic building block. Public images typically has only minimal con
 * [`docker insert`](http://docs.docker.io/reference/commandline/cli/#insert) inserts a file from URL into image. (kind of odd, you'd think images would be immutable after create)
 * [`docker load`](http://docs.docker.io/reference/commandline/cli/#load) loads an image from a tar archive as STDIN, including images and tags (as of 0.7).
 * [`docker save`](http://docs.docker.io/reference/commandline/cli/#save) saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions (as of 0.7).
-* docker history displays the steps used to create and modify the image. Important to understand among things the underlying distro used, TCP/IP ports presented to docker (You then need to match those ports with your "docker run" command)
+* [docker history](https://docs.docker.com/reference/commandline/cli/#history) displays the steps used to create and modify the image. Important to understand among things the underlying distro used, TCP/IP ports presented to docker (You then need to match those ports with your "docker run" command)
 
 
 ## Containers
@@ -47,13 +48,9 @@ A Container is the [isolated runtime environment](http://docker.readthedocs.org/
 A typical container life-cycle might be 
 - Launch a generic container from a generic image
 - Access the console and modify the application as it's running from inside the container
-- Commit your container, thereby creating a new image which now contains your configuration modifications.
+- Commit your container, thereby creating a new image which now contains your configuration modifications. When you stop and next time start your new container, it will retain your changes.
 
-Note: the following line is useful info from the prefork, but needs a new home.
-
-* __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
-
-### Common Container Commands
+### Common Container management commands
 
 * [`docker run`](http://docs.docker.io/reference/commandline/cli/#run) creates a container.
 * [`docker stop`](http://docs.docker.io/reference/commandline/cli/#stop) stops it.
@@ -66,21 +63,33 @@ Note: the following line is useful info from the prefork, but needs a new home.
 
 If you want a transient container, `docker run --rm` will remove the container after it stops.
 
-Containers generally are created to run either as a background process (aka "service") or as an inbteractive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
-* An example creating a daemon/service/background container specifying an optional custom container name
-'docker run -d --name containername imagename'
-* An example creating a foreground/normal_app, specifying an interactive tty bash console.
-'docker run -it --name containername imagename /bin/bash'
+Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
+* An example creating a daemon/service/background container specifying an optional custom container name<br />
+```
 
-If you want to map a directory on the host to a docker container, `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
+'docker run -d --name containername imagename'
+```
+
+* An example creating a foreground/normal_app, specifying an interactive tty bash console.<br />
+```
+
+'docker run -it --name containername imagename /bin/bash'
+```
+
+If you want to map(often described as "sharing") a directory on the host to a docker container,<br />
+```
+
+ `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
+```
 
 If you want to integrate a container with a [host process manager](http://docs.docker.io/use/host_integration/), start the daemon with `-r=false` then use `docker start -a`.
 
-If you want to expose container ports through the host, see the [exposing ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports) section.
+If you want to allow incoming network connections to the app in your container, see the [exposing ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports) section.
 
 ### Info
 
-* [`docker ps`](http://docs.docker.io/reference/commandline/cli/#ps) shows running containers.
+* [`docker ps`](http://docs.docker.io/reference/commandline/cli/#ps) lists running containers.
+* [`docker ps -a`](http://docs.docker.io/reference/commandline/cli/#ps) lists all containers, both  running and stopped.
 * [`docker inspect`](http://docs.docker.io/reference/commandline/cli/#inspect) queries a container or image for low level information
 * [`docker logs`](http://docs.docker.io/reference/commandline/cli/#logs) gets logs from container.
 * [`docker events`](http://docs.docker.io/reference/commandline/cli/#events) gets events from container.
@@ -88,18 +97,16 @@ If you want to expose container ports through the host, see the [exposing ports]
 * [`docker top`](http://docs.docker.io/reference/commandline/cli/#top) shows running processes in container.
 * [`docker diff`](http://docs.docker.io/reference/commandline/cli/#diff) shows changed files in the container's FS.
 
-`docker ps -a` lists all containers, both  running and stopped.
 
 ### Import / Export
 (Update - this section will be modified to describe the ADD dockerfile command)
-There doesn't seem to be a way to use docker directly to import files into a container's filesystem.  The closest thing is to mount a host file or directory as a data volume and copy it from inside the container.
 
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
 * [`docker export`](http://docs.docker.io/reference/commandline/cli/#export) turns container filesystem into tarball.
 
 ### Entering a Docker Container
 
-The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter using unix sockets minimizing dependencies and complexity, so in theory should be faster and easier.
+The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter using unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally possible.
 
 * I recommend following my [wiki article](http://en.opensuse.org/User:Tsu2/docker-enter) as simplest but you can also follow others who have written about nsenter
 * [Installing nsenter using docker](https://github.com/jpetazzo/nsenter)
@@ -116,7 +123,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
 
 ## Registry & Repository
-Note: This section will be re-worked
+Note: This section will be re-worked after definitions are re-verified<br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
 You can also specify other private repositories.
@@ -157,9 +164,6 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 * Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
 
-### Best Practices
-
-If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
 ### Layers
 
@@ -320,8 +324,19 @@ docker rm `docker ps -a -q`
 
 ```
 docker images -viz | dot -Tpng -o docker.png
+```
+
+### Misc Useful tips
+```
+
+* __Containers are not limited to running a single command or process.__  You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
+* If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
+
+```
 
 ### My openSUSE Wiki articles
+```
+
 Install Docker on openSUSE
 http://en.opensuse.org/User:Tsu2/docker
 Access a Container Console
@@ -329,8 +344,11 @@ http://en.opensuse.org/User:Tsu2/docker-enter
 Build your own Custom Container
 http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
+```
 
 ### Interesting Docker links
+```
+
 15 Quick Docker Tips
 https://github.com/putztzu/docker-cheat-sheet.git
 10 Docker Tips
