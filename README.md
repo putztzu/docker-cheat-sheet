@@ -4,17 +4,17 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)
-* [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
+* [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry-repository)
 * [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)
 * [Layers](https://github.com/putztzu/docker-cheat-sheet#layers)
 * [Links](https://github.com/putztzu/docker-cheat-sheet#links)
 * [Volumes](https://github.com/putztzu/docker-cheat-sheet#volumes)
 * [Exposing Ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports)
 * [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
-# [Misc Useful Tips](https://github.com/putztzu/docker-cheat-sheet#misc-useful-tips)
+* [Misc Useful Tips](https://github.com/putztzu/docker-cheat-sheet#misc-useful-tips)
 * [My openSUSE Wiki articles](https://github.com/putztzu/docker-cheat-sheet#my-opensuse-wiki-articles)
 * [Interesting Docker links](https://github.com/putztzu/docker-cheat-sheet#interesting-docker-links)
-* [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#credit-to-original=work)
+* [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#credit-to-original-work)
 
 
 ## Prerequisites, Docker Installation
@@ -160,7 +160,7 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 * [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
 
-### Examples
+### Docker Documentation Examples
 
 * Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
 
@@ -258,9 +258,9 @@ Probably the most tedious part of Docker is typing all those odd names and long 
 If you can remember what they mean, a letter or number might be enough
 #### Just type the first couple or few numbers in the ID<br />
 (nice, undocumented feature)
-The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displayes a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary,
+The actual containerid or imageid is over 40 characters long (I haven't counted what the actual number is.Listing the container or image (eg docker ps or docker images) displays a truncated string but you can type even fewer digits! As an example, if you have fewer than 10 images in your local repository, typing only the first two digits is already likely unique enough to reference a specific image and that is all that's necessary,
 
-The following example removes an image with an image id that starts with 'a1b2c3d4e5f5' <br />
+The following example removes an image with an imageid that starts with `a1b2c3d4e5f5` <br />
 ```
 
 docker rmi a1
