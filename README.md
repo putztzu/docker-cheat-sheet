@@ -334,14 +334,14 @@ docker rm `docker ps -a -q`
 docker images -viz | dot -Tpng -o docker.png
 ```
 ### Misc Useful tips
-```
+
 Containers are not limited to running a single command or process. You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
 If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
-```
+
 ## My openSUSE Wiki articles
-```
+
 Install Docker on openSUSE
 http://en.opensuse.org/User:Tsu2/docker
 Access a Container Console
@@ -349,16 +349,16 @@ http://en.opensuse.org/User:Tsu2/docker-enter
 Build your own Custom Container
 http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
-```
+
 ## Interesting Docker links
-```
+
 15 Quick Docker Tips
 https://github.com/putztzu/docker-cheat-sheet.git
 10 Docker Tips
 Includes displaying a graphic image
 http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/``
-```
+
 ## Credit to Original Work
-```
+
 Based on original work by [www.github.com/wsargent](http://github.com/wsargent/docker-cheat-sheet). 
 `
