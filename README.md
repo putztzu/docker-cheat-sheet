@@ -105,7 +105,7 @@ Note - this section under review and will be modified to describe the ADD docker
 
 ### Entering a Docker Container
 
-The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter using unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally possible.
+The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter uses unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally possible.
 
 * I recommend following my [wiki article](http://en.opensuse.org/User:Tsu2/docker-enter) as simplest but you can also follow others who have written about nsenter
 * [Installing nsenter using docker](https://github.com/jpetazzo/nsenter)
