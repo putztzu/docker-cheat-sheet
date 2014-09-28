@@ -230,7 +230,7 @@ Some fundemental docker architecture should be reviewed here
 -- The LInux Bridging Device to be used<br />
 -- The re-mapped port to be used to avoid contention
 
-If host:container port mapping is not defined explicitly in the "docker run" command, defaults are applied. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
+If any networking parameter is not defined explicitly in the "docker run" command, defaults are applied. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
 
 To tell docker your app wants to use a standard app port (don't worry if this might conflict in the real world, with "docker run" this standard port will be either mapped to the standard port or remapped if necessary)
 
