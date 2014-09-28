@@ -1,9 +1,4 @@
 # Docker Cheat Sheet
-
-Maintained separately by TSU based on original work by [www.github.com/wsargent](http://github.com/wsargent/docker-cheat-sheet). The reason why I decided to do a permanent fork is that much of my re-wording is stylistic rather than purely substantive. Some differences are
-* Most if not all non-Docker is removed including Vagrant, MacOS (unless related to setup), more.
-* I conceptualized some Docker architecture differently. The architecture is not actually different, but the way I piece things together in my mind is considerably different in some places (eg EXPOSE).
-
 ## Table of Contents
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
@@ -15,6 +10,7 @@ Maintained separately by TSU based on original work by [www.github.com/wsargent]
 * [Volumes](https://github.com/putztzu/docker-cheat-sheet#volumes)
 * [Exposing Ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports)
 * [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
+* [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#Credit to Original Work)
 
 
 ## Prerequisites, Docker Installation
@@ -353,4 +349,14 @@ http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 https://github.com/putztzu/docker-cheat-sheet.git
 10 Docker Tips
 Includes displaying a graphic image
-http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/```
+http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/``
+
+```
+
+## Credit to Original Work
+```
+
+Based on original work by [www.github.com/wsargent](http://github.com/wsargent/docker-cheat-sheet). 
+
+
+`
