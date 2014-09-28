@@ -4,7 +4,7 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)
-* [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry-repository)
+* [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
 * [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)
 * [Layers](https://github.com/putztzu/docker-cheat-sheet#layers)
 * [Links](https://github.com/putztzu/docker-cheat-sheet#links)
@@ -99,7 +99,7 @@ If you want to allow incoming network connections to the app in your container, 
 
 
 #### Import / Export
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+
 Note - this section under review and will be modified to describe the ADD dockerfile command)
 
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
@@ -124,7 +124,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
 
 ## Registry & Repository
-<img src="https://github.com/putztzu/docker-cheat-sheet/blob/master/images/under_review.jpg width="60">
+
 Note: This section under review<br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
@@ -168,13 +168,13 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 
 ## Layers
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+
 Note: This section under review
 
 The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based on layers.  They're like [git commits or changesets for filesystems](http://docker.readthedocs.org/reference/terms/layer/).
 
 ## Links
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+
 Note: This section under review
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
@@ -209,7 +209,7 @@ And you can connect to it that way.
 To delete links, use `docker rm --link `.
 
 ## Volumes
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+
 Note: This secion under review
 
 Docker volumes are [free-floating filesystems](http://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.
@@ -271,7 +271,7 @@ The following example removes an image with an imageid that starts with `a1b2c3d
 
 docker rmi a1
 ```
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+
 Note: The rest of this section is under review
 
 Source for the next tips:
