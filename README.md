@@ -53,11 +53,11 @@ A typical container life-cycle might be
 #### Common Container management commands
 
 * [`docker run`](http://docs.docker.io/reference/commandline/cli/#run) creates a container.
-* [`docker stop`](http://docs.docker.io/reference/commandline/cli/#stop) stops it.
-* [`docker start`](http://docs.docker.io/reference/commandline/cli/#start) will start it again.
+* [`docker stop`](http://docs.docker.io/reference/commandline/cli/#stop) stops the container.
+* [`docker start`](http://docs.docker.io/reference/commandline/cli/#start) stops and restarts the container.
 * [`docker restart`](http://docs.docker.io/reference/commandline/cli/#restart) restarts a container.
 * [`docker rm`](http://docs.docker.io/reference/commandline/cli/#rm) deletes a container.
-* [`docker kill`](http://docs.docker.io/reference/commandline/cli/#kill) sends a SIGKILL to a container.  [Has issues](https://github.com/dotcloud/docker/issues/197).
+* [`docker kill`](http://docs.docker.io/reference/commandline/cli/#kill) sends a SIGKILL to a container. 
 * [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) allows view or interact with a running container 
 * [`docker wait`](http://docs.docker.io/reference/commandline/cli/#wait) blocks until container stops.
 
@@ -95,7 +95,7 @@ If you want to allow incoming network connections to the app in your container, 
 * [`docker events`](http://docs.docker.io/reference/commandline/cli/#events) gets events from container.
 * [`docker port`](http://docs.docker.io/reference/commandline/cli/#port) identifies the external port number for the specified container port (See EXPOSE)
 * [`docker top`](http://docs.docker.io/reference/commandline/cli/#top) shows running processes in container.
-* [`docker diff`](http://docs.docker.io/reference/commandline/cli/#diff) shows changed files in the container's FS.
+* [`docker diff`](http://docs.docker.io/reference/commandline/cli/#diff) shows changed files in the container's file system.
 
 
 #### Import / Export
@@ -120,8 +120,8 @@ The nsenter documentation you follow should describe how to use a command "docke
 
 #### Info
 
-* [`docker history`](http://docs.docker.io/reference/commandline/cli/#history) shows history of image.
-* [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
+* [`docker history`](http://docs.docker.io/reference/commandline/cli/#history) displays how the image has been built.
+* [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) assigns a custom name/alias to the image (local or registry).
 
 ## Registry & Repository
 
