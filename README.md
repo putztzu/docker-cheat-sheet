@@ -249,6 +249,7 @@ docker port CONTAINER $CONTAINERPORT
 
 ## Tips
 ### Reference an image or container with only a couple taps
+Probably the most tedious part of Docker is typing all those odd names and long ID strings. Supercharge your work with the following techniques!
 #### Use Custom names, make them descriptive and short
 If you can remember what they mean, a letter or number might be enough
 #### Just type the first couple or few numbers in the ID(nice, undocumented feature)
