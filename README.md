@@ -20,7 +20,7 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 ## Prerequisites, Docker Installation
 If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. If you are experienced with any virtualization or already have some kind of virtualization installed, you can create a Guest and install Docker in that Guest in an ordinary way.
 
-Whatever distro you prefer, Docker should be installed according to directions for your distro. As of this writing docker can be installed in the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found on this [Docker documentation pagee](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
+Whatever distro you prefer, Docker should be installed according to directions for your distro. As of this writing docker can be installed using the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found on this [Docker documentation pagee](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
 
 http://en.opensuse.org/User:Tsu2/docker
 
@@ -28,7 +28,7 @@ http://en.opensuse.org/User:Tsu2/docker
 The [Docker reference](http://docker.readthedocs.org/reference/terms/image/).<br />
 An image is a basic building block. Public images typically have only minimal configurations, ready for you to customize and create a running environment (a container).
 
-### Common Image management commands
+#### Common Image management commands
 
 * [`docker images`](http://docs.docker.io/reference/commandline/cli/#images) displays all images in the local repository.
 * [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) extracts an image from a tarball file.
@@ -50,7 +50,7 @@ A typical container life-cycle might be
 - Access the console and modify the application as it's running from inside the container
 - Commit your container, thereby creating a new image which now contains your configuration modifications. When you stop and next time start your new container, it will retain your changes.
 
-### Common Container management commands
+#### Common Container management commands
 
 * [`docker run`](http://docs.docker.io/reference/commandline/cli/#run) creates a container.
 * [`docker stop`](http://docs.docker.io/reference/commandline/cli/#stop) stops it.
@@ -86,7 +86,7 @@ If you want to integrate a container with a [host process manager](http://docs.d
 
 If you want to allow incoming network connections to the app in your container, see the [exposing ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports) section.
 
-### Info
+#### Info
 
 * [`docker ps`](http://docs.docker.io/reference/commandline/cli/#ps) lists running containers.
 * [`docker ps -a`](http://docs.docker.io/reference/commandline/cli/#ps) lists all containers, both  running and stopped.
@@ -98,7 +98,7 @@ If you want to allow incoming network connections to the app in your container, 
 * [`docker diff`](http://docs.docker.io/reference/commandline/cli/#diff) shows changed files in the container's FS.
 
 
-### Import / Export
+#### Import / Export
 Note - this section under review and will be modified to describe the ADD dockerfile command)
 
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
@@ -117,7 +117,7 @@ The most recommended way to enter a docker container while it's running is to us
 
 The nsenter documentation you follow should describe how to use a command "docker-enter" which is a wrapper for nsenter with a series of commonly desired command attributes (see the official nsentern documentation for more details). You can also append a command to the end of the docker-enter command if you wish to execute the command by default (not typically necessary).
 
-### Info
+#### Info
 
 * [`docker history`](http://docs.docker.io/reference/commandline/cli/#history) shows history of image.
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
