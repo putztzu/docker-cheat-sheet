@@ -342,20 +342,20 @@ If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting 
 
 ## My openSUSE Wiki articles
 
-Install Docker on openSUSE
-http://en.opensuse.org/User:Tsu2/docker
-Access a Container Console
-http://en.opensuse.org/User:Tsu2/docker-enter
-Build your own Custom Container
+Install Docker on openSUSEt<br />
+http://en.opensuse.org/User:Tsu2/dockert<br />
+Access a Container Consolet<br />
+http://en.opensuse.org/User:Tsu2/docker-entert<br />
+Build your own Custom Containert<br />
 http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
 
 ## Interesting Docker links
 
-15 Quick Docker Tips
-https://github.com/putztzu/docker-cheat-sheet.git
-10 Docker Tips
-Includes displaying a graphic image
+15 Quick Docker Tips<br />
+https://github.com/putztzu/docker-cheat-sheet.git<br />
+10 Docker Tipst<br />
+Includes displaying a graphic imaget<br />
 http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/``
 
 ## Credit to Original Work
