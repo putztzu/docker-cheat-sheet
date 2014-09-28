@@ -124,7 +124,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
 
 ## Registry & Repository
-<img src="https://raw.githubusercontent.com/putztzu/docker-cheat-sheet/images/under_review.jpg width="60">
+<img src="https://github.com/putztzu/docker-cheat-sheet/blob/master/images/under_review.jpg width="60">
 Note: This section under review<br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
