@@ -223,10 +223,10 @@ Some fundemental docker architecture should be reviewed here
 - Docker Containers are runtime instances based on Images.
 - Docker security is like a shell around the running container
 - Apps running in a Container must inform Docker from the inside what ports the app wants to accept connections.
-- The "docker run" command completes the TCP/IP networking configuration by defining at least the following
--- The networking stack to be used
--- The real world IP address to be used
--- The LInux Bridging Device to be used
+- The "docker run" command completes the TCP/IP networking configuration by defining at least the following<br />
+-- The networking stack to be used<br />
+-- The real world IP address to be used<br />
+-- The LInux Bridging Device to be used<br />
 -- The re-mapped port to be used to avoid contention
 
 If not defined explicitly in the "docker run" command, defaults are used. In some cases this is acceptable, but some configs like specifying incoming ports are best explicitly defined so are consistent and easily known (else would be random).
