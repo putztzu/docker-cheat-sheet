@@ -104,7 +104,7 @@ Note - this section under review and will be modified to describe the ADD docker
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
 * [`docker export`](http://docs.docker.io/reference/commandline/cli/#export) turns container filesystem into tarball.
 
-### Entering a Docker Container
+#### Entering a Docker Container
 
 The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter uses unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally possible.
 
@@ -123,6 +123,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 * [`docker tag`](http://docs.docker.io/reference/commandline/cli/#tag) tags an image to a name (local or registry).
 
 ## Registry & Repository
+<img src="/images/under_review.jpg width="60">
 Note: This section under review<br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
@@ -141,7 +142,7 @@ Docker.io hosts its own [index](https://index.docker.io/) to a central registry 
 
 Dockerfile (exactly as shown including capitalized "D") is [the configuration file](http://docs.docker.io/introduction/working-with-docker/#working-with-the-dockerfile) used to build an image. Can be thought of as the "Install file" that defines the steps used to build an image. Typically it will start with a base image defined by FROM, identify its creator/maintainer with MAINTAINER, a sequence of RUN steps, define some app ports with EXPOSE and end by executing a CMD or ENTRYPOINT to start an application
 
-### Some Common Dockerfile Elements
+#### Some Common Dockerfile Elements
 
 * [FROM](http://docs.docker.io/reference/builder/#from)
 * [MAINTAINER](http://docs.docker.io/reference/builder/#maintainer)
@@ -156,25 +157,26 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 * [WORKDIR](http://docs.docker.io/reference/builder/#workdir)
 * [ONBUILD](http://docs.docker.io/reference/builder/#onbuild)
 
-### Tutorials
+#### Tutorials
 
 * [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
 
-### Docker Documentation Examples
+#### Docker Documentation Examples
 
 * Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
 
 
-### Layers
+## Layers
 Note: This section under review
 
 The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based on layers.  They're like [git commits or changesets for filesystems](http://docker.readthedocs.org/reference/terms/layer/).
 
-### Links
+## Links
 Note: This section under review
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
+<img src="/images/under_review.jpg width="60">
 UPDATE NOTE:
 From here to the end of this "Links" section, the following example is from the original pre-fork cheat sheet and has not been verified
 
@@ -203,7 +205,8 @@ And you can connect to it that way.
 
 To delete links, use `docker rm --link `.
 
-### Volumes
+## Volumes
+<img src="/images/under_review.jpg width="60">
 Note: This secion under review
 
 Docker volumes are [free-floating filesystems](http://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.
@@ -216,7 +219,7 @@ Because volumes are isolated filesystems, they are often used to store state fro
 
 See [advanced volumes](http://crosbymichael.com/advanced-docker-volumes.html) for more details.
 
-### Exposing ports
+## Exposing ports
 aka Setting up Incoming Network Connections<br />
 [The official Docker documentation](http://docs.docker.io/use/port_redirection/#binding-a-port-to-an-host-interface).<br />
 
@@ -265,14 +268,14 @@ The following example removes an image with an imageid that starts with `a1b2c3d
 
 docker rmi a1
 ```
-
+<img src="/images/under_review.jpg width="60">
 Note: The rest of this section is under review
 
 Source for the next tips:
 
 * [15 Docker Tips in 5 minutes](http://sssslide.com/speakerdeck.com/bmorearty/15-docker-tips-in-5-minutes)
 
-### Last Ids
+#### Last Ids
 
 ```
 alias dl='docker ps -l -q'
@@ -280,13 +283,13 @@ docker run ubuntu echo hello world
 docker commit `dl` helloworld
 ```
 
-### Commit with command (needs Dockerfile)
+#### Commit with command (needs Dockerfile)
 
 ```
 docker commit -run='{"Cmd":["postgres", "-too -many -opts"]}' `dl` postgres
 ```
 
-### Get IP address
+#### Get IP address
 
 ```
 docker inspect `dl` | grep IPAddress | cut -d '"' -f 4
@@ -308,31 +311,31 @@ or (this is unverified)
 docker inspect -f '{{ .NetworkSettings.IPAddress }}' <container_name>
 ```
 
-### Get port mapping
+#### Get port mapping
 
 ```
 docker inspect -f '{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' <containername>
 ```
 
-### Get Environment Settings
+#### Get Environment Settings
 
 ```
 docker run --rm ubuntu env
 ```
 
-### Delete old containers
+#### Delete old containers
 
 ```
 docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm
 ```
 
-### Delete stopped containers
+#### Delete stopped containers
 
 ```
 docker rm `docker ps -a -q`
 ```
 
-### Show image dependencies
+#### Show image dependencies
 ```
 docker images -viz | dot -Tpng -o docker.png
 ```
