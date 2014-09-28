@@ -238,14 +238,14 @@ To tell docker your app wants to use a standard app port (don't worry if this mi
 EXPOSE <CONTAINERPORT>
 ```
 
-This command tells docker an app running in the container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking like ip addressing is defined.
+This command tells docker an app running insidethe container wants to accept incoming connections on this standard app port. Note that the way docker works, actual networking configuration is configured in docker itself so no other networking like ip addressing is defined.
 
-In the following, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
+In the following example, the container is intended to run in daemon mode (aka background like a service. The alternative is to define and immediately run a console), a localhost address is defined (warning, this won't work in a virtualized environment if docker is running in something like Virtualbox. A known issue is that you must use an actual network address that's not localhost). The real world mapped port is $HOSTPORT separated from the port defined by EXPOSE called $CONTAINERPORT. A custom name is optionally defined followed by the image the container is created from. 
 ```
 docker run -d -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
 ```
 
-If you forget what you mapped the port to on the host container, use `docker port` to show it:
+If you forget what you mapped the port to on the host container, use `docker port` to display it:
 
 ```
 docker port CONTAINER $CONTAINERPORT
@@ -330,23 +330,18 @@ docker rm `docker ps -a -q`
 ```
 
 ### Show image dependencies
-
 ```
 docker images -viz | dot -Tpng -o docker.png
 ```
-
 ### Misc Useful tips
 ```
-
 Containers are not limited to running a single command or process. You can use [supervisord](http://docs.docker.io/examples/using_supervisord/) or [runit](https://github.com/phusion/baseimage-docker).
 
 If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
 ```
-
 ## My openSUSE Wiki articles
 ```
-
 Install Docker on openSUSE
 http://en.opensuse.org/User:Tsu2/docker
 Access a Container Console
@@ -355,22 +350,15 @@ Build your own Custom Container
 http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
 ```
-
 ## Interesting Docker links
 ```
-
 15 Quick Docker Tips
 https://github.com/putztzu/docker-cheat-sheet.git
 10 Docker Tips
 Includes displaying a graphic image
 http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/``
-
 ```
-
 ## Credit to Original Work
 ```
-
 Based on original work by [www.github.com/wsargent](http://github.com/wsargent/docker-cheat-sheet). 
-
-
 `
