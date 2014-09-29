@@ -5,7 +5,8 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)<br />
 [Common Image management commands](https://github.com/putztzu/docker-cheat-sheet#common-image-management-commands)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)<br />
-[Common Container management commands](https://github.com/putztzu/docker-cheat-sheet#common-container-management-commands)
+[Common Container management commands](https://github.com/putztzu/docker-cheat-sheet#common-container-management-commands)<br />
+[Incoming Network Connections](#incoming-network-connections)
 * [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
 * [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)
 * [Layers](https://github.com/putztzu/docker-cheat-sheet#layers)
