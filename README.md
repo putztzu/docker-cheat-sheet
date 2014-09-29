@@ -178,7 +178,7 @@ The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based
 
 ## Links
 
-__Note: This section under review_
+__Note: This section under review__
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
