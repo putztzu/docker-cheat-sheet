@@ -6,14 +6,33 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 [Common Image management commands](https://github.com/putztzu/docker-cheat-sheet#common-image-management-commands)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)<br />
 [Common Container management commands](https://github.com/putztzu/docker-cheat-sheet#common-container-management-commands)<br />
-[Incoming Network Connections](#incoming-network-connections)
+[Incoming Network Connections](#incoming-network-connections)<br />
+[Configuring a Container to auto start on boot](#configuring-a-container-to-auto-start-on-boot)<br />
+[Info](#info)<br />
+[Import / Export](#import--export)<br />
+[Entering a Docker Container](#entering-a-docker-container)<br />
+[Info](#info-1)
 * [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
-* [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)
+* [Dockerfile](https://github.com/putztzu/docker-cheat-sheet#dockerfile)<br />
+[Some Common Dockerfile Elements](#some-common-dockerfile-elements)<br />
+[Tutorials](#tutorials)<br />
+[Docker Documentation Examples](#docker-documentation-examples)
 * [Layers](https://github.com/putztzu/docker-cheat-sheet#layers)
 * [Links](https://github.com/putztzu/docker-cheat-sheet#links)
 * [Volumes](https://github.com/putztzu/docker-cheat-sheet#volumes)
 * [Exposing Ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports)
-* [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)
+* [Tips](https://github.com/putztzu/docker-cheat-sheet#tips)<br />
+[Reference an image or container with only a couple taps](#reference-an-image-or-container-with-only-a-couple-taps)
+[Use Custome names, make them descriptive and short](#use-custome-names-make-them-descriptive-and-short)<br />
+[Just type the first couple or few numbers in the ID](#just-type-the-first-couple-or-few-numbers-in-the-ID)<br />
+[Last ids](#last-ids)<br />
+[Commit with command (needs Dockerfile](#commit-with-command-needs-dockerfile)<br />
+[Get IP address](#get-ip-address)<br />
+[Get port mapping](#get-port-mapping)<br />
+[Get Environment Settings](#get-environment-settings)<br />
+[Delete old containers]{#delete old containers)<br />
+[Delete stopped containers](#delete-stopped-containers)<br />
+[Show image dependencies]{#show-image-dependencies)
 * [Misc Useful Tips](https://github.com/putztzu/docker-cheat-sheet#misc-useful-tips)
 * [My openSUSE Wiki articles](https://github.com/putztzu/docker-cheat-sheet#my-opensuse-wiki-articles)
 * [Interesting Docker links](https://github.com/putztzu/docker-cheat-sheet#interesting-docker-links)
