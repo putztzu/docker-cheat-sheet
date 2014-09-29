@@ -297,8 +297,8 @@ docker commit -run='{"Cmd":["postgres", "-too -many -opts"]}' `dl` postgres
 ```
 #### Get IP address
 
-```
 ~~Docker inspect `dl` | grep IPAddress | cut -d '"' -f 4~~
+```
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' ..."
 ```
 or
