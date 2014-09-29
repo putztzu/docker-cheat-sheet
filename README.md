@@ -266,10 +266,8 @@ The actual containerid or imageid is over 40 characters long (I haven't counted 
 
 The following example removes an image with an imageid that starts with `a1b2c3d4e5f5` <br />
 ```
-
 docker rmi a1
 ```
-
 Note: The rest of this section is under review
 
 Source for the next tips:
@@ -283,19 +281,16 @@ alias dl='docker ps -l -q'
 docker run ubuntu echo hello world
 docker commit `dl` helloworld
 ```
-
 #### Commit with command (needs Dockerfile)
 
 ```
 docker commit -run='{"Cmd":["postgres", "-too -many -opts"]}' `dl` postgres
 ```
-
 #### Get IP address
 
 ```
 docker inspect `dl` | grep IPAddress | cut -d '"' -f 4
 ```
-
 or
 
 ```
@@ -305,37 +300,27 @@ cd jq-1.3
 ./configure && make && sudo make install
 docker inspect `dl` | jq -r '.[0].NetworkSettings.IPAddress'
 ```
-
 or (this is unverified)
-
 ```
 docker inspect -f '{{ .NetworkSettings.IPAddress }}' <container_name>
 ```
-
 #### Get port mapping
-
 ```
 docker inspect -f '{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' <containername>
 ```
-
 #### Get Environment Settings
-
 ```
 docker run --rm ubuntu env
 ```
-
 #### Delete old containers
-
 ```
 docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm
 ```
-
 #### Delete stopped containers
 
 ```
 docker rm `docker ps -a -q`
 ```
-
 #### Show image dependencies
 ```
 docker images -viz | dot -Tpng -o docker.png
