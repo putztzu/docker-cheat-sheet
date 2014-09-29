@@ -158,11 +158,11 @@ Dockerfile (exactly as shown including capitalized "D") is [the configuration fi
 
 #### Tutorials
 
-* [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
+[Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
 
 #### Docker Documentation Examples
 
-* Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
+Note that the official Docker [Examples](http://docs.docker.io/reference/builder/#dockerfile-examples) describe techniques and methods, and not simply ways to implement a solution described by the example title. The technique and method is hidden and not described obviously, it's up to the Student to identify and extract those lessons.
 
 
 ## Layers
