@@ -2,8 +2,8 @@
 An extraordinarily verbose compilation of useful Docker commands, where they are used and examples
 ## Table of Contents
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
-* [Images](https://github.com/putztzu/docker-cheat-sheet#images)
-[Commin Image management commands](https://github.com/putztzu/docker-cheat-sheet#common-image-management-commands)
+* [Images](https://github.com/putztzu/docker-cheat-sheet#images)<br />
+[Common Image management commands](https://github.com/putztzu/docker-cheat-sheet#common-image-management-commands)
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)<br />
 [Common Container management commands](https://github.com/putztzu/docker-cheat-sheet#common-container-management-commands)
 * [Registry and Repository](https://github.com/putztzu/docker-cheat-sheet#registry--repository)
