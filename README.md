@@ -66,7 +66,7 @@ A typical container life-cycle might be
 * [`docker attach`](http://docs.docker.io/reference/commandline/cli/#attach) allows view or interact with a running container 
 * [`docker wait`](http://docs.docker.io/reference/commandline/cli/#wait) blocks until container stops.
 
-If you want a transient container, `docker run --rm` will remove the container after it stops.
+If you want to create and run a temporary container, `docker run --rm` will remove the container after it stops.
 
 Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "normal app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
 * An example creating a daemon/service/background "detached" container specifying an optional custom container name<br />
