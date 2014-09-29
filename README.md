@@ -103,7 +103,7 @@ This is described in the Docker documentation as [host process manager integrati
 
 #### Import / Export
 
-Note - this section under review and will be modified to describe the ADD dockerfile command)
+__Note - this section under review__ and will be modified to describe the ADD dockerfile command)
 
 * [`docker cp`](http://docs.docker.io/reference/commandline/cli/#cp) copies files or folders out of a container's filesystem.
 * [`docker export`](http://docs.docker.io/reference/commandline/cli/#export) turns container filesystem into tarball.
@@ -128,7 +128,7 @@ The nsenter documentation you follow should describe how to use a command "docke
 
 ## Registry & Repository
 
-Note: This section under review<br />
+__Note: This section under review__ <br />
 A repository is a *hosted* collection of tagged images. The public docker repository can be searched with "docker search"
 When a copy of the image is downloaded and stored locally for personal use, you have a local repository.
 You can also specify other private repositories.
@@ -172,13 +172,13 @@ Note that the official Docker [Examples](http://docs.docker.io/reference/builder
 
 ## Layers
 
-Note: This section under review
+__Note: This section under review__
 
 The [versioned filesystem](http://en.wikipedia.org/wiki/Aufs) in Docker is based on layers.  They're like [git commits or changesets for filesystems](http://docker.readthedocs.org/reference/terms/layer/).
 
 ## Links
 
-Note: This section under review
+__Note: This section under review_
 
 Links are how two Docker containers can be combined (http://docs.docker.io/use/working_with_links_names/).  [Linking into Redis](http://docs.docker.io/use/working_with_links_names/#links-service-discovery-for-docker) and [Atlassian](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show examples.  You can also resolve [links by hostname](http://docs.docker.io/use/working_with_links_names/#resolving-links-by-name).
 
@@ -213,7 +213,7 @@ To delete links, use `docker rm --link `.
 
 ## Volumes
 
-Note: This secion under review
+__Note: This secion under review__
 
 Docker volumes are [free-floating filesystems](http://docs.docker.com/userguide/dockervolumes/).  They don't have to be connected to a particular container.
 
@@ -273,7 +273,7 @@ The following example removes an image with an imageid that starts with `a1b2c3d
 ```
 docker rmi a1
 ```
-Note: The rest of this section is under review
+__Note: The rest of this section is under review__
 
 Source for the next tips:
 
