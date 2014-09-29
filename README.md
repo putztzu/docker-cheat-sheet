@@ -1,5 +1,9 @@
 # Docker Cheat Sheet
 An extraordinarily verbose compilation of useful Docker commands, where they are used and examples
+
+__Temporary Note__<br />
+Until all content in this early draft Docker Cheat Sheet has been reviewed, unreviewed content is preceded by __Note - this section under review__
+
 ## Table of Contents - Main Sections only
 see [Index](#index) for links to all sections
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
@@ -21,7 +25,7 @@ see [Index](#index) for links to all sections
 ## Prerequisites, Docker Installation
 If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. If you are experienced with any virtualization or already have some kind of virtualization installed, you can create a Guest and install Docker in that Guest in an ordinary way.
 
-Whatever distro you prefer, Docker should be installed according to directions for your distro. As of this writing docker can be installed using the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found on this [Docker documentation pagee](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
+Whatever distro you prefer, Docker should be installed according to directions for your distro. As of this writing docker can be installed using the regular repositories for Ubuntu, CentOS, Fedora and likely many more. Docker Install instructions can be found on this [Docker documentation page](https://docs.docker.com/installation/#installation). A better guide for installing docker on  OpenSUSE is here:
 
 http://en.opensuse.org/User:Tsu2/docker
 
@@ -64,7 +68,7 @@ A typical container life-cycle might be
 
 If you want a transient container, `docker run --rm` will remove the container after it stops.
 
-Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
+Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "normal app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
 * An example creating a daemon/service/background "detached" container specifying an optional custom container name<br />
 ```
 'docker run -d --name containername imagename'
@@ -75,7 +79,7 @@ Containers generally are created to run either as a background process (aka "ser
 ```
 If you want to map a directory(often described as "folder sharing") on the host to a docker container,<br />
 ```
- `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
+ `docker run -v $HOSTDIR:$DOCKERDIR` (also see [Volumes](#volumes) section).
 ```
 #### Incoming Network Connections
 
@@ -106,7 +110,7 @@ Note - this section under review and will be modified to describe the ADD docker
 
 #### Entering a Docker Container
 
-The most recommended way to enter a docker container while it's running is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter uses unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally possible.
+The most recommended way to gain access to a console of a running docker container is to use [nsenter](http://jpetazzo.github.io/2014/03/23/lxc-attach-nsinit-nsenter-docker-0-9/).  Using an `sshd` daemon is the official documentation but [considered evil](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/). Note that sshd requires installing and configuring sshd, exposing a network stack and remoting in using TCP/IP sockets. Aside from the complexity setting that all up, it's also not always possible. Nsenter uses unix sockets minimizing dependencies and complexity, so in theory should be less complex and more universally usable.
 
 * I recommend following my [wiki article](http://en.opensuse.org/User:Tsu2/docker-enter) as simplest but you can also follow others who have written about nsenter
 * [Installing nsenter using docker](https://github.com/jpetazzo/nsenter)
