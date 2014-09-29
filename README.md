@@ -76,16 +76,19 @@ Containers generally are created to run either as a background process (aka "ser
 'docker run -it --name containername imagename /bin/bash'
 ```
 
-If you want to map(often described as "sharing") a directory on the host to a docker container,<br />
+If you want to map a directory(often described as "folder sharing") on the host to a docker container,<br />
 ```
 
  `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
 ```
-
-If you want to integrate a container with a [host process manager](http://docs.docker.io/use/host_integration/), start the daemon with `-r=false` then use `docker start -a`.
+#### Incoming Network Connections
 
 If you want to allow incoming network connections to the app in your container, see the [exposing ports](https://github.com/putztzu/docker-cheat-sheet#exposing-ports) section.
 
+
+#### Configuring a Container to auto start on boot
+
+This is described in the Docker documentation as [host process manager integration](http://docs.docker.io/use/host_integration/). In plain words, after you have a tested running container, you invoke it with "docker start -a" and modify the docker daemon (ie if using systemd, modify the Unitfile) to start with "-r=false." You can find a sample Unitfile script in the referenced Docker documentation. 
 #### Info
 
 * [`docker ps`](http://docs.docker.io/reference/commandline/cli/#ps) lists running containers.
