@@ -1,7 +1,7 @@
 # Docker Cheat Sheet
 An extraordinarily verbose compilation of useful Docker commands, where they are used and examples
 ## Table of Contents - Main Sections only
-see Index for links to all sections
+see [Index](#index) for links to all sections
 * [Installation](https://github.com/putztzu/docker-cheat-sheet#installation)
 * [Images](https://github.com/putztzu/docker-cheat-sheet#images)<br />
 * [Containers](https://github.com/putztzu/docker-cheat-sheet#containers)<br />
@@ -16,7 +16,7 @@ see Index for links to all sections
 * [My openSUSE Wiki articles](https://github.com/putztzu/docker-cheat-sheet#my-opensuse-wiki-articles)
 * [Interesting Docker links](https://github.com/putztzu/docker-cheat-sheet#interesting-docker-links)
 * [Credit to Original Work](https://github.com/putztzu/docker-cheat-sheet#credit-to-original-work)
-* [Index](#index0
+* [Index](#index)
 
 ## Prerequisites, Docker Installation
 If you are running on Windows, Solaris, BSD or some other non Linux OS, run Docker in a virtualization technology like Virtualbox, VMware, Hyper-V. If running on Windows and you are only mildly familiar with virtualization, [boot2docker](http://boot2docker.io/) is a project that installs Virtualbox, tinycorelinux(Debian based) and docker with a number of desirable apps like ssh at once. If you are experienced with any virtualization or already have some kind of virtualization installed, you can create a Guest and install Docker in that Guest in an ordinary way.
