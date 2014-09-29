@@ -30,9 +30,9 @@ An extraordinarily verbose compilation of useful Docker commands, where they are
 [Get IP address](#get-ip-address)<br />
 [Get port mapping](#get-port-mapping)<br />
 [Get Environment Settings](#get-environment-settings)<br />
-[Delete old containers]{#delete old containers)<br />
+[Delete old containers](#delete old containers)<br />
 [Delete stopped containers](#delete-stopped-containers)<br />
-[Show image dependencies]{#show-image-dependencies)
+[Show image dependencies](#show-image-dependencies)
 * [Misc Useful Tips](https://github.com/putztzu/docker-cheat-sheet#misc-useful-tips)
 * [My openSUSE Wiki articles](https://github.com/putztzu/docker-cheat-sheet#my-opensuse-wiki-articles)
 * [Interesting Docker links](https://github.com/putztzu/docker-cheat-sheet#interesting-docker-links)
