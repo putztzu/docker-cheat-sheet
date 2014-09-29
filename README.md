@@ -66,19 +66,14 @@ If you want a transient container, `docker run --rm` will remove the container a
 Containers generally are created to run either as a background process (aka "service") or as an interactive "foreground" (normal app). Another way to compare the two is that a background "daemon" container continues to run without a logged in User. A foreground "nomral app" container instantiates with immediate access to a running console, and when the User exits/quits the console the container also stops.
 * An example creating a daemon/service/background "detached" container specifying an optional custom container name<br />
 ```
-
 'docker run -d --name containername imagename'
 ```
-
 * An example creating a foreground/normal app, specifying an interactive tty bash console.<br />
 ```
-
 'docker run -it --name containername imagename /bin/bash'
 ```
-
 If you want to map a directory(often described as "folder sharing") on the host to a docker container,<br />
 ```
-
  `docker run -v $HOSTDIR:$DOCKERDIR` (also see Volumes section).
 ```
 #### Incoming Network Connections
