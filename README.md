@@ -273,15 +273,16 @@ The following example removes an image with an imageid that starts with `a1b2c3d
 ```
 docker rmi a1
 ```
+__A useful comment about the following__ <br />
+Add or replace some of the following commands using the following syntax, an example follows which is used for nsenter <br />
+docker inspect --format '{{.State.Pid}}' ..."
 __Note: The rest of this section is under review__
 
 Source for the next tips:
 
 * [15 Docker Tips in 5 minutes](http://sssslide.com/speakerdeck.com/bmorearty/15-docker-tips-in-5-minutes)
 
-__A useful comment about the following__ <br />
-Add or replace some of the following commands using the following syntax, an example follows which is used for nsenter <br />
-docker inspect --format '{{.State.Pid}}' ..."
+
 
 #### Last Ids
 
