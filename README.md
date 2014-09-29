@@ -279,6 +279,10 @@ Source for the next tips:
 
 * [15 Docker Tips in 5 minutes](http://sssslide.com/speakerdeck.com/bmorearty/15-docker-tips-in-5-minutes)
 
+__A useful comment about the following__ <br />
+Add or replace some of the following commands using the following syntax, an example follows which is used for nsenter <br />
+docker inspect --format '{{.State.Pid}}' ..."
+
 #### Last Ids
 
 ```
@@ -294,7 +298,8 @@ docker commit -run='{"Cmd":["postgres", "-too -many -opts"]}' `dl` postgres
 #### Get IP address
 
 ```
-docker inspect `dl` | grep IPAddress | cut -d '"' -f 4
+~~Docker inspect `dl` | grep IPAddress | cut -d '"' -f 4~~
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' ..."
 ```
 or
 
