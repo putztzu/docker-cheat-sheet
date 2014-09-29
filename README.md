@@ -36,7 +36,7 @@ An image is a basic building block. Public images typically have only minimal co
 #### Common Image management commands
 
 * [`docker images`](http://docs.docker.io/reference/commandline/cli/#images) displays all images in the local repository.
-* [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) extracts an image from a tarball file.
+* [`docker import`](http://docs.docker.io/reference/commandline/cli/#import) extracts an image from a tarball file into the local repository.
 * [`docker build`](http://docs.docker.io/reference/commandline/cli/#build) creates image from Dockerfile.
 * [`docker commit`](http://docs.docker.io/reference/commandline/cli/#commit) creates image from a container.
 * [`docker rmi`](http://docs.docker.io/reference/commandline/cli/#rmi) removes an image from the local repository.
