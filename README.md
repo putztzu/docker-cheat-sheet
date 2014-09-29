@@ -336,6 +336,7 @@ Containers are not limited to running a single command or process. You can use [
 
 If you use [jEdit](http://jedit.org), wsargent has put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
 
+A list of useful Dev related commands, useful for building and troubleshooting images and containers, currently very new [Docker Dev Corner](https://github.com/putztzu/Docker_Dev_Corner)
 
 ## My openSUSE Wiki articles
 
