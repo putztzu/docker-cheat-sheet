@@ -340,11 +340,11 @@ A list of useful Dev related commands, useful for building and troubleshooting i
 
 ## My openSUSE Wiki articles
 
-Install Docker on openSUSEt<br />
+Install Docker on openSUSE<br />
 http://en.opensuse.org/User:Tsu2/dockert<br />
-Access a Container Consolet<br />
+Access a Container Console<br />
 http://en.opensuse.org/User:Tsu2/docker-entert<br />
-Build your own Custom Containert<br />
+Build your own Custom Container<br />
 http://en.opensuse.org/User:Tsu2/docker-build-tutorial-1
 
 
